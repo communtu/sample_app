@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= @title %> </title>
-  <%= stylesheet_link_tag('blueprint/screen', {:media => 'screen'}) %>
-  <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
-</head>
-<body>
-	<h1><%= title %></h1>
-	<%= yield %>
-</body>
+  <head>
+    <title><%= title %></title>
+    <%= csrf_meta_tag %>
+	<%= render 'layouts/stylesheets' %>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <%= image_tag("logo.png", :alt => "Sample App", :class => "round") %>
+        <nav class="round">
+          <ul>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Help", help_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Sign in", signin_path %></li>
+          </ul>
+        </nav>
+      </header>
+      <section class="round">
+        <%= yield %>
+      </section>
+    </div>
+  </body>
 </html>
